@@ -13,23 +13,19 @@ import { LoginRoomComponent } from './components/login-room/login-room.component
 const routes: Routes = [
   {
     path:'',//Ruta raiz
-    canActivate:[GuardLogin],
-    component: LoginComponent
+    component: HomeComponent,
   },
   {
     path:'login',
-    canActivate:[GuardLogin],
     component: LoginComponent
   },
   {
     path:'home',
-    canActivate:[Guard],
     component: HomeComponent,
   
   },
   {
     path:'register',
-    canActivate:[GuardLogin],
     component: RegisterComponent
   },
   {
@@ -48,6 +44,10 @@ const routes: Routes = [
   {
     path:'login/room',
     component: LoginRoomComponent
+  },
+  {
+    path:'**',
+    component: HomeComponent
   },
 ];
 
