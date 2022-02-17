@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<router-outlet></router-outlet>
+<div class="container">
+
+    <!--CABECERA DE LA WEB-->
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:  rgba(0, 0, 0,0.1)" *ngIf="type">
+        <a class="navbar-brand" [routerLink]="['/home']" style="cursor: pointer;" (click)="saveType(1)">Primer Parcial</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link mr-2" [routerLink]="['/room',uuid]" *ngIf="type=='home'" style="cursor: pointer;" (click)="saveType(2)">Entrar a sala</a>
+                </li>
+                
+            </ul>
+
+        </div>
+
+        
+
+    </nav>
+
+    <body>
+
+
+
+        <!-- Room Modal -->
+        <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="max-width: 350px" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Saved Project</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form #savedForm="ngForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Name</label>
+                                <input type="text" class="form-control" name="name" id="name" #name="ngModel" [(ngModel)]="saved.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Description</label>
+                                <textarea class="form-control" name="description" id="description" #description="ngModel" [(ngModel)]="saved.description"></textarea>
+                            </div>
+
+                            <a (click)="onSubmit()" class="btn btn-danger" data-dismiss="modal" style="color: white; margin-right: 5px; margin-left: 25%;">Save</a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Modal Code-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Codigo de la sala</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        {{roomCode}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="getLink()">Obtener</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+
+
+
+
+    <router-outlet></router-outlet>
