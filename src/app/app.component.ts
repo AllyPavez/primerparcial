@@ -56,7 +56,8 @@ export class AppComponent implements DoCheck{
  }
 
  loadUuid(){
-  this.uuid=uuidv4;//new Date().getTime();
+   const string="ajqw-6546-sdqry-";
+  this.uuid=string+new Date().getTime();
  }
 
  saveType(value:number){
